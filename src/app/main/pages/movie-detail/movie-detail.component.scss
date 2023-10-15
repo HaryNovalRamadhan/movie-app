@@ -1,0 +1,25 @@
+.movie-detail{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.movie-detail > img{
+    width: 100%;
+}
+
+.movie-detail > h1 {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.movie-detail > p {
+    margin-top: 8px;
+}
+
+.back-button{
+    position: absolute;
+    left: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+}
