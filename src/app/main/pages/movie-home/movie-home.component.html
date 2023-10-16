@@ -6,8 +6,8 @@
                 <p class="title-white">movies</p>
             </div>
             <div class="nav">
-                <p>Home</p>
-                <p>Favorite</p>
+                <p (click)="homePage()">Home</p>
+                <p (click)="favoritePage()">Favorite</p>
             </div>
             <div class="nav">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1.3em"
@@ -24,7 +24,11 @@
         </div>
     </header>
 
-    <div class="movie-list" >
+    <div *ngIf="!isLoading">
+        loading...
+    </div>
+
+    <div class="movie-list" *ngIf="isLoading">
         <div *ngFor="let movie of movies" class="movie-item" [routerLink]="['/detail',movie.id]">
             <img *ngIf="movie.poster_path" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path }}" class="movie-img">
             <h3>{{movie.original_title}}</h3>

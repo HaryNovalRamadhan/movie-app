@@ -8,7 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./movie-home.component.scss']
 })
 export class MovieHomeComponent implements OnInit {
+
   public movies:any;
+  public isLoading: boolean = false;
+
+
   constructor(
     private movieService: MovieService,
     private route: ActivatedRoute,
@@ -16,10 +20,34 @@ export class MovieHomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.isLoading = false
     this.movieService.getMovie().then(res => {
       this.movies = res.results
+      this.isLoading = true
     })
+  }
+
+  homePage(){
+    this.isLoading = false
+    this.movieService.getMovie().then(res => {
+      this.movies = res.results
+      this.isLoading = true
+    })
+  }
+
+
+  favoritePage(){
+    this.isLoading = false
+    let favoriteStorage = localStorage.getItem('favorites')
+    const favoriteMovies = favoriteStorage? JSON.parse(favoriteStorage) : "null";
+
+    if(favoriteMovies !== "null"){
+        let movieArr = []
+        movieArr.push(favoriteMovies)
+        this.movies =  movieArr
+        this.isLoading = true
+    }
+
   }
 
 }
