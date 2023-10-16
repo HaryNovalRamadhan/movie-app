@@ -12,9 +12,13 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
   
     MovieDetailComponent
   ],
-  imports: [RouterModule.forChild([
+  imports: [
+    RouterModule.forChild([
         { path: '', component: MovieHomeComponent },
         { path: 'detail/:id', component: MovieDetailComponent }
-    ])],
+    ]),
+    CommonModule
+  ],
+    
 })
 export class MovieModule { }
